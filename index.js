@@ -1,15 +1,26 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 
 const urlencodedParser = express.urlencoded({ extended: false });
+
+app.use(cors());
+app.use(urlencodedParser);
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
 app.get('/client.js', (req, res) => {
-  console.log('client.js has been requested');
   res.sendFile(__dirname + '/client.js');
+});
+
+app.get('/test', (req, res) => {
+  // res.send('hello');
+  console.log('localhost:3000/test has been requested');
+  // res.send(JSON.stringify({ hello: 'world' }));
+  // res.json().send({ hello: 'word' });
+  res.send('hello');
 });
 
 const users = [

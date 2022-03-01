@@ -20,9 +20,30 @@ document.querySelector('form[name="form-submit"]').addEventListener('submit', (e
   let login = document.querySelector('input[name="login"]').value;
   let password = document.querySelector('input[name="password"]').value;
 
-  let res = await;
+  //   let res = await fetch('localhost:3000/test').then((res) => console.log(res));
 
-  alert(SHA1(login));
+  //   let json = res.json();
+
+  //   fetch('http://localhost:3000/test')
+  //     .then((res) => res.text())
+  //     .then((res) => console.log(res));
+
+  const user = {
+    login: 'admin1',
+    password: 'admin',
+  };
+
+  fetch('https://helloworldprojectt.herokuapp.com/v1/authorization', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(user),
+  });
+
+  //   console.log(json);
+
+  //   alert(SHA1(login));
 });
 
 function SHA1(msg) {
